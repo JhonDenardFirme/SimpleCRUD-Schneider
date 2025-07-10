@@ -1,0 +1,42 @@
+﻿@model SchneiderDashboard.Models.Employee
+
+@{
+    ViewData["Title"] = "Add Employee";
+}
+
+<h2>Add Employee</h2>
+
+<form asp-action="Create" method="post">
+    <div class="form-group">
+        <label>SESA ID</label>
+        <input asp-for="SesaId" class="form-control" />
+    </div>
+
+    <div class="form-group">
+        <label>Name</label>
+        <input asp-for="Name" class="form-control" />
+    </div>
+
+    <div class="form-group">
+        <label>Birth Date</label>
+        <input asp-for="Birthdate" class="form-control" type="date" />
+    </div>
+
+    <div class="form-group">
+        <label>Gender</label>
+        <select asp-for="GenderCode" class="form-control"
+                asp-items="@(new SelectList(ViewBag.Genders, "GenderCode", "GenderDesc"))">
+            <option value="">Select Gender</option>
+        </select>
+    </div>
+
+    <div class="form-group">
+        <label>Department</label>
+        <select asp-for="DepartmentCode" class="form-control"
+                asp-items="@(new SelectList(ViewBag.Departments, "DepartmentCode", "DepartmentDesc"))">
+            <option value="">Select Department</option>
+        </select>
+    </div>
+
+    <button type="submit" class="btn btn-success mt-3">Create</button>
+</form>

@@ -1,0 +1,27 @@
+﻿@model SchneiderDashboard.Models.Employee
+
+@{
+    ViewData["Title"] = "Employee Details";
+}
+
+<h2>Employee Details</h2>
+
+<dl class="row">
+    <dt class="col-sm-2">SESA ID</dt>
+    <dd class="col-sm-10">@Model.SesaId</dd>
+
+    <dt class="col-sm-2">Name</dt>
+    <dd class="col-sm-10">@Model.Name</dd>
+
+    <dt class="col-sm-2">Birthdate</dt>
+    <dd class="col-sm-10">@Model.Birthdate?.ToShortDateString()</dd>
+
+    <dt class="col-sm-2">Gender</dt>
+    <dd class="col-sm-10">@Model.GenderCodeNavigation?.GenderDesc</dd>
+
+    <dt class="col-sm-2">Department</dt>
+    <dd class="col-sm-10">@Model.DepartmentCodeNavigation?.DepartmentDesc</dd>
+</dl>
+
+<a asp-action="Edit" asp-route-id="@Model.SesaId" class="btn btn-primary">Edit</a>
+<a asp-action="Index" class="btn btn-secondary">Back to List</a>

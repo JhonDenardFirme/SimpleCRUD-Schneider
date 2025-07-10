@@ -1,0 +1,38 @@
+﻿@model IEnumerable<SchneiderDashboard.Models.Employee>
+
+@{
+    ViewData["Title"] = "Employee List";
+}
+
+<h2>Employee List</h2>
+
+<a asp-action="Create" class="btn btn-primary mb-3">Add New Employee</a>
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>SESA ID</th>
+            <th>Name</th>
+            <th>Birthdate</th>
+            <th>Gender</th>
+            <th>Department</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var emp in Model)
+        {
+            <tr>
+                <td>@emp.SesaId</td>
+                <td>@emp.Name</td>
+                <td>@emp.Birthdate?.ToString("yyyy-MM-dd")</td>
+                <td>@emp.GenderCodeNavigation?.GenderDesc</td>
+                <td>@emp.DepartmentCodeNavigation?.DepartmentDesc</td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@emp.SesaId" class="btn btn-sm btn-warning">Edit</a>
+                    <a asp-action="Delete" asp-route-id="@emp.SesaId" class="btn btn-sm btn-danger">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
